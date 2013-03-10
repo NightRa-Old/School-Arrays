@@ -9,7 +9,7 @@ public class SubArray<T> extends Array<T> {
 
     public SubArray(IArrayContainer<T> container, int startIndex, int endIndex) {
         super(container);
-        Range range = new Range(0, length());
+        Range range = new Range(0, super.length());
         if (!(range.contains(startIndex) && range.contains(endIndex))) {
             throw new IndexOutOfBoundsException();
         }
@@ -30,5 +30,13 @@ public class SubArray<T> extends Array<T> {
     @Override
     public int length() {
         return endIndex-startIndex;
+    }
+
+    public int getStartIndex() {
+        return startIndex;
+    }
+
+    public int getEndIndex() {
+        return endIndex;
     }
 }

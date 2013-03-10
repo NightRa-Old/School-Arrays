@@ -1,8 +1,10 @@
 // Created by Ilan Godik
 package NightRa.util.arrays.base;
 
+import java.util.Arrays;
+
 public class Array<T> implements IArrayContainer<T>{
-    private T[] array;
+    protected T[] array;
 
     @SafeVarargs
     public Array(T... array) {
@@ -31,5 +33,10 @@ public class Array<T> implements IArrayContainer<T>{
 
     public int length(){
         return array.length;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof IArrayContainer && Arrays.equals(((IArrayContainer) obj).getArray(),getArray());
     }
 }

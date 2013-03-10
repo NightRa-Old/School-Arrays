@@ -19,4 +19,11 @@ public class RangeTest {
         Assert.assertTrue(range.contains(9));
         Assert.assertFalse(range.contains(10));
     }
+
+    @Test
+    public void testThrowOutOfBounds() throws Exception {
+        Range range = new Range(0,6);
+        Assert.assertEquals(true,range.contains(5));
+
+    }
 }
