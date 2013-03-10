@@ -1,64 +1,58 @@
 // Created by Ilan Godik
 package NightRa.util.arrays;
 
+import NightRa.util.arrays.base.Array;
+import NightRa.util.arrays.base.IArrayContainer;
+import NightRa.util.arrays.base.IArrayManipulator;
 import NightRa.util.numbers.IntBase;
 
 import java.util.Arrays;
 
-public class ArrayMorph<T> {
-    private T[] array;
+public class ArrayMorph<T> extends Array<T> implements IArrayManipulator<T> {
 
     @SafeVarargs
     public ArrayMorph(T... array) {
-        this.array = array;
+        super(array);
     }
 
-    public T[] shift(int shift) {
-        int length = array.length;
+    public ArrayMorph(IArrayContainer<T> container) {
+        super(container);
+    }
+
+    public void shift(int shift) {
+        int length = length();
         IntBase base = new IntBase(length);
-        T[] shifted = Arrays.copyOf(array, length);
+        T[] shifted = Arrays.copyOf(getArray(), length);
         for (int i = 0; i < length; i++) {
-            shifted[base.Mod(i + shift)] = array[i];
+            shifted[base.Mod(i + shift)] = get(i);
         }
         setArray(shifted);
-        return shifted;
     }
 
-    public T[] shiftLeft() {
-        return shift(-1);
+    public void shiftLeft() {
+        shift(-1);
     }
 
-    public T[] shiftRight() {
-        return shift(1);
+    public void shiftRight() {
+        shift(1);
     }
 
-    public T[] swap(int index1, int index2) {
-        T temp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = temp;
-        return array;
+    public void swap(int index1, int index2) {
+        T temp = get(index1);
+        set(index1,get(index2));
+        set(index2,temp);
     }
 
-    public T[] getArray() {
-        return array;
-    }
-
-    public void setArray(T[] array) {
-        this.array = array;
-    }
-
-    public T[] swapPairs() {
-        int length = array.length;
+    public void swapPairs() {
+        int length = length();
         for (int i = 0; i < (length % 2 == 0 ? length : length - 1); i += 2) {
             swap(i, i + 1);
         }
-        return array;
     }
 
-    public T[] backwards() {
-        for (int i = 0; i < array.length / 2; i++) {
-            swap(i,array.length-i);
+    public void backwards() {
+        for (int i = 0; i < length() / 2; i++) {
+            swap(i,length()-i-1);
         }
-        return array;
     }
 }

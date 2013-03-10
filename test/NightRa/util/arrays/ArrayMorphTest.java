@@ -9,7 +9,8 @@ public class ArrayMorphTest {
     public void testShift() throws Exception {
         ArrayMorph<Integer> array = new ArrayMorph<>(5,3,8,9,2);
         Integer[] expected = {8,9,2,5,3};
-        Assert.assertArrayEquals(expected,array.shift(-2));
+        array.shift(-2);
+        Assert.assertArrayEquals(expected,array.getArray());
     }
 
     @Test
@@ -24,7 +25,8 @@ public class ArrayMorphTest {
     public void testShiftRight() throws Exception {
         ArrayMorph<String> array = new ArrayMorph<>("Hello","World","How","Are","You?");
         String[] expected = {"You?","Hello","World","How","Are"};
-        Assert.assertArrayEquals(expected,array.shiftRight());
+        array.shiftRight();
+        Assert.assertArrayEquals(expected,array.getArray());
     }
 
     @Test
