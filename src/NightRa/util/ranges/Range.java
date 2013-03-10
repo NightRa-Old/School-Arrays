@@ -19,11 +19,33 @@ public class Range {
         return min.isSmallerThan(num) && max.isBiggerThan(num);
     }
 
-    public double getMin() {
+    public double getMinValue() {
         return min.get();
     }
 
-    public double getMax() {
+    public double getMaxValue() {
         return max.get();
+    }
+
+    public ComparableDouble getMin() {
+        return min;
+    }
+
+
+    public ComparableDouble getMax() {
+        return max;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Range range = (Range) o;
+
+        if (!max.equals(range.max)) return false;
+        if (!min.equals(range.min)) return false;
+
+        return true;
     }
 }

@@ -1,17 +1,14 @@
 //Created By Ilan Godik
 package NightRa.util.ranges;
 
-public abstract class ComparableDouble {
-    private double num;
+import NightRa.util.containers.DoubleContainer;
 
-    protected ComparableDouble(double num){
-        this.num = num;
-    }
-
-    public double get() {
-        return num;
+public abstract class ComparableDouble extends DoubleContainer {
+    public ComparableDouble(double num) {
+        super(num);
     }
 
     public abstract boolean isBiggerThan(double num);
     public abstract boolean isSmallerThan(double num);
+    @Override public abstract boolean equals(Object o);
 }

@@ -1,11 +1,18 @@
 // Created by Ilan Godik
 package NightRa.util.arrays.base;
 
+import NightRa.util.ranges.Range;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ArrayTest {
     private Array<Integer> array = new Array<>(5,3,16,26,4);
+
+    @Test
+    public void testGetIndexRange() throws Exception {
+        Range range = new Range(0,5);
+        Assert.assertEquals(range,array.getIndexRange());
+    }
 
     @Test
     public void testSet() throws Exception {
@@ -16,7 +23,7 @@ public class ArrayTest {
 
     @Test
     public void testGet() throws Exception {
-        Assert.assertEquals((Integer)16,array.get(2));
+        Assert.assertEquals((Integer) 16, array.get(2));
     }
 
     @Test

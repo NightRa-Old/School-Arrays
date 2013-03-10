@@ -8,8 +8,8 @@ public class RangeTest {
     @Test
     public void testConstructorGet() throws Exception {
         Range range = new Range(5,9);
-        Assert.assertEquals(5,range.getMin(),0);
-        Assert.assertEquals(9,range.getMax(),0);
+        Assert.assertEquals(5,range.getMinValue(),0);
+        Assert.assertEquals(9,range.getMaxValue(),0);
     }
 
     @Test
@@ -24,6 +24,22 @@ public class RangeTest {
     public void testThrowOutOfBounds() throws Exception {
         Range range = new Range(0,6);
         Assert.assertEquals(true,range.contains(5));
+    }
+
+    @Test
+    public void testGetMin() throws Exception {
+        Range range = new Range(8,9);
+        Inclusive inc = new Inclusive(8);
+        Exclusive ex = new Exclusive(9);
+        Assert.assertEquals(inc,range.getMin());
+        Assert.assertEquals(ex,range.getMax());
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        Range range = new Range(9,7);
+        Range range2 = new Range(9,7);
+        Assert.assertEquals(range2,range);
 
     }
 }

@@ -1,6 +1,8 @@
 // Created by Ilan Godik
 package NightRa.util.arrays.base;
 
+import NightRa.util.ranges.Range;
+
 import java.util.Arrays;
 
 public class Array<T> implements IArrayContainer<T>{
@@ -38,5 +40,9 @@ public class Array<T> implements IArrayContainer<T>{
     @Override
     public boolean equals(Object obj) {
         return obj instanceof IArrayContainer && Arrays.equals(((IArrayContainer) obj).getArray(),getArray());
+    }
+
+    public Range getIndexRange() {
+        return new Range(0,length());
     }
 }
